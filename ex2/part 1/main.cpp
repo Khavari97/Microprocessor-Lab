@@ -9,8 +9,8 @@ int main() {
     while (true)
     {
         PORTA = 0xFF;
-        _delay_ms(500);
+        _delay_ms(50);
         PORTA = 0;
-         _delay_ms(500);
+         _delay_ms(50);
     }
 }
