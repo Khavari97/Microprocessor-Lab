@@ -8,9 +8,11 @@ int main() {
     PORTB = 0;
     while (true)
     {
-        PORTB = 0xFF;
-        _delay_ms(50);
-        PORTB = 0;
-         _delay_ms(50);
+        if(PINA & (1<<PA0)== 1){
+            PORTB = 0xFF;
+            _delay_ms(50);
+            PORTB = 0;
+            _delay_ms(50);
+        }
     }
 }

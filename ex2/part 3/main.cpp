@@ -3,15 +3,11 @@
 #define F_CPU 1000000UL
 
 int main() {
-
-   // DDRA = 0xFF;
-   // PORTA = 0;
-
-   if(PINA & (1<<PA0) ==1){
+  
       while (true)
     {
-    
-       PORTB = 0b10000000;
+        if(PINA & (1<<PA0) ==1) {
+        PORTB = 0b10000000;
        _delay_ms(50);
        PORTB = 0b11000000;
        _delay_ms(50);
@@ -69,8 +65,10 @@ int main() {
        _delay_ms(50);
        PORTB = 0b10000000;
        _delay_ms(50);
-       
+
+        }
+
     }
-   }
+   
 
 }
