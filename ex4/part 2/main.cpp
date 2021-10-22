@@ -1,6 +1,9 @@
 #include <avr/io.h>
+#include <avr/interrupt.h>
+#include <avr/mega16a.h>
 #include <stdio.h>
-#include <avr/LCD.h>
+#include "LCD.h"
+#include <util/atomic.h>
  
 unsigned char Buffer[17];
 unsigned char second = 30;
@@ -16,18 +19,18 @@ unsigned char hour = 10;
     }
  
 int main() {
-///////////////////block 1
+///block 1
 lcd_init();
 lcd_clear();
-///////////////////block 2
+///block 2
 TIMSK = 0x40;
 TIFR = 0x40;
 sei();
-///////////////////block 3
+////block 3
 ASSR = 0x08;
 TCNT2 = 0x00;
 TCCR2 = 0x05;
-///////////////////block 4
+///block 4
 time_write();
 lcd_gotoxy(3,1);
 lcd_string_signed("Start Time");

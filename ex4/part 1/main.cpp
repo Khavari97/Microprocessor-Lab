@@ -1,5 +1,5 @@
 #include <avr/io.h>
-#include <avr/LCD.h>
+#include "LCD.h"
 #include <avr/delay.h>
 
 
