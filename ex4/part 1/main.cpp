@@ -16,6 +16,8 @@ while (1)
        lcd_clear();
        lcd_gotoxy(0,0);
        lcd_putsf('Zahra Khavari');
+       lcd_gotoxy(0,1);
+       lcd_putsf('Hello Word!');
        _delay_ms(500);
        
       }
