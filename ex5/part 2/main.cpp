@@ -4,7 +4,6 @@
 
 int main() {
 
-    
         DDRA=0X0F;
         PORTA=0X01;    //1
         _delay_ms(5);
@@ -17,6 +16,4 @@ int main() {
         PORTA=0X01;    //1
         _delay_ms(5);
    
-
-
 }
