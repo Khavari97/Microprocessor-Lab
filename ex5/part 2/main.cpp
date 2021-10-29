@@ -3,6 +3,8 @@
 
 
 int main() {
+//1 8 3 5 1
+        int round[5] = {0X01,0X08,0X02,0X04,0X01};
 
         DDRA=0X0F;
         PORTA=0X01;    //1
