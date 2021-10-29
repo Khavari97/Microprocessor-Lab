@@ -1,22 +1,36 @@
-#include <avr/io.h>
-#include <util/delay.h>
+#include <avr/io.h>     
+#include <util/delay.h> 
+#include <avr/interrupt.h>
 
 
-int main() {   
+int direction[5] = {0x01, 0x04, 0x02, 0x08,0x01};
 
-    
-        DDRA=0X0F;
-        PORTA=0X01;    //1
-        _delay_ms(50);
-        PORTA=0X04;    //5
-        _delay_ms(50);
-        PORTA=0X02;     //3
-        _delay_ms(50);
-        PORTA=0X08;     //8
-        _delay_ms(50);
-        PORTA=0X01;    //1
-        _delay_ms(50);
+int main(){
+        
+    DDRA = 0x0f; 
+    PORTA = 0x00;
    
+    sei();
 
-
+    while (true)
+    {
+        PORTC |= 0x04;
+        if (PINC == 0)
+        {
+            TCCR0 = 0x05;
+            TIMSK = 0x01;
+        }
+    }
+    return 0;
 }
+
+int num = 0;
+ISR(TIMER0_OVF_vect){
+   
+    num++;
+    if (num > 4)
+        num = 0;
+        PORTA = direction[num];
+   
+}
+
