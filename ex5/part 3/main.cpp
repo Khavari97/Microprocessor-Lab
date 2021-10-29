@@ -30,13 +30,17 @@ ISR(TIMER0_OVF_vect){
    
     num++;
     
-    while (fast){
+   /** while (fast){
         if(num>10){
             num = 0;
             PORTA = direction[num];
             fast++;
         }
-    }
+    }**/
+    if(num>10)
+            num = 0;
+            PORTA = direction[num];
+            fast++;
         
    
 }
