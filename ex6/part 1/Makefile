@@ -13,7 +13,7 @@
 # ------------------------------------------------------------------
 #
 # Final file
-TARGET      	= StepperMotor1
+TARGET      	= Temperature
 #
 # Library directory
 LIBDIR        = lib
