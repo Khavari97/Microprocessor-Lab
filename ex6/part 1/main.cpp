@@ -14,21 +14,21 @@ void adcInit(){
 int adcSet(char ch){
 	ADMUX = (0 << REFS1) | (1 << REFS0) | (0 << ADLAR) ;
 
-	_delay_us(10);
+	_delay_ms(10);
 	ADCSRA |= (1 << ADSC);
 
 	while ((ADCSRA & (1 << ADIF)) == 0);
 	ADCSRA |= (1 << ADIF);
-
 	return ADCW;
 }
 
 int main(){
-	char Buffer[16];
+	
 	LCD_Init();
 	adcInit();
+	char Buffer[16];
     float cel;
-	while(1){
+	while(true){
 		
 	   LCD_String_xy(0,0,"Temperature: ");
 	   cel = (adcSet(0)*4.88);
@@ -37,4 +37,5 @@ int main(){
 	   LCD_String_xy(1,0,Buffer);
 	   	
 	}
+	return 0;
 }

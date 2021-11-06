@@ -13,7 +13,7 @@
 # ------------------------------------------------------------------
 #
 # Final file
-TARGET      	= Temperature
+TARGET      	= Temperature2
 #
 # Library directory
 LIBDIR        = lib
