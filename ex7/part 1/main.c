@@ -38,14 +38,14 @@ lcd_putsf("Enter a number : ");
 lcd_gotoxy(0,1);
 delay_ms(1000);
 lcd_clear();
-DDRD = 0b11111111;
+
 while (1)
       {
       key = get_key();
-       PORTD=0b11111111;
+       
           if(key<255){ 
 
-          sprintf(buff,"number :%02d ",key);
+          sprintf(buff,"number :%d ",key);
           lcd_gotoxy(0,0);
           lcd_puts(buff);
           }
