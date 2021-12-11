@@ -43,8 +43,8 @@
 
  void disp()
  {
- char mess[] = "LINE FOLLOWING ROBOT";
- char mess2[] = "Hello";
+ char mess[] = "FOLLOWING ROBOT";
+ char mess2[] = "HELLO";
  lcd_message(LCD_LINE_1, mess );
 
  _delay_ms(1000);
