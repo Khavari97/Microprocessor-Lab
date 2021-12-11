@@ -2,6 +2,7 @@
 #include <util/delay.h>
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
 
  #define RS 0
  #define RW 1
@@ -42,8 +43,8 @@
 
  void disp()
  {
- char mess[] = "LINE FOLLOWING ROBOT CREATED BY";
- char mess2[] = "BILAL MALIK";
+ char mess[] = "LINE FOLLOWING ROBOT";
+ char mess2[] = "Hello";
  lcd_message(LCD_LINE_1, mess );
 
  _delay_ms(1000);
@@ -144,18 +145,18 @@ if((val & 0x40)==0x40)
  }
  if(dirl>HMAX)
  {
- move(CCW);//,0,rotpow);
+ move(CCW);
 
-_delay_ms(1000); // TESTING & DEBUG
+_delay_ms(1000); 
  }
  else
  {
- move(CW);//,0,rotpow);
+ move(CW);
 
-_delay_ms(1000); // TESTING & DEBUG
+_delay_ms(1000); 
  }
 
-_delay_ms(1000); // TESTING & DEBUG
+_delay_ms(1000);
 
 }
 
@@ -166,7 +167,7 @@ _delay_ms(1000); // TESTING & DEBUG
  PORTD=dir;
 
  char ch[10];
- //itoa(dir,ch,10);
+ itoa(dir,ch,10);
  Lcd_Cmd(CLEAR_LCD);
 
 if(dir == STOP)
@@ -217,30 +218,30 @@ void Lcd_Cmd(unsigned char cmd)
 //LCD_PORT &= ~((1<<rs)|(1<<rw)); rs="" low="" for="" command,="" rw="" <span="" class="hiddenSpellError" pre="for " data-mce-bogus="1">write
  LCD_PORT |= (1<<EN); // Set enable
  LCD_PORT &= 0x0F;
- LCD_PORT |= (cmd & 0xF0); // Send upper nibble
- LCD_PORT &= ~(1<<EN); // Enable low
+ LCD_PORT |= (cmd & 0xF0);
+ LCD_PORT &= ~(1<<EN); 
  _delay_ms(1);
  LCD_PORT |= (1<<EN); // Set enable
  LCD_PORT &= 0x0F;
- LCD_PORT |= (cmd << 4); // Send lower nibble
- LCD_PORT &= ~(1<<EN); // Enable low
+ LCD_PORT |= (cmd << 4); 
+ LCD_PORT &= ~(1<<EN); 
  _delay_ms(1);
  }
 
 void lcd_data(unsigned char data)
  {
 
- LCD_PORT |= (1<<RS); //RS high for data
+ LCD_PORT |= (1<<RS); 
  //LCD_PORT &= ~(1<<rw); rw="" low="" for="" <span="" class="hiddenSpellError" pre="for " data-mce-bogus="1">write
  LCD_PORT |= (1<<EN); // Set enable
  LCD_PORT &= 0x0F;
- LCD_PORT |= (data & 0xF0); // Send upper nibble
- LCD_PORT &= ~(1<<EN); // Enable low
+ LCD_PORT |= (data & 0xF0);
+ LCD_PORT &= ~(1<<EN); 
  _delay_ms(1);
- LCD_PORT |= (1<<EN); // Set enable
+ LCD_PORT |= (1<<EN);
  LCD_PORT &= 0x0F;
- LCD_PORT |= (data << 4); // Send lower nibble
- LCD_PORT &= ~(1<<EN); // Enable low
+ LCD_PORT |= (data << 4); 
+ LCD_PORT &= ~(1<<EN); 
  _delay_ms(1);
  }
 
@@ -255,16 +256,16 @@ void lcd_data(unsigned char data)
  Lcd_Cmd(0x03);
  _delay_ms(1);
  Lcd_Cmd(0x02);
- _delay_ms(1); //as said in the book
- Lcd_Cmd(0x28); //Set interface length
+ _delay_ms(1); 
+ Lcd_Cmd(0x28);
  _delay_ms(1);
  Lcd_Cmd(0x08); // Turn off display
  _delay_ms(1);
  Lcd_Cmd(0x01); //Clear display
  _delay_ms(1);
- Lcd_Cmd(0x06); //Set cursor move direction
+ Lcd_Cmd(0x06); 
  _delay_ms(1);
- Lcd_Cmd(0x0F); //Enable display cursor
+ Lcd_Cmd(0x0F); 
  _delay_ms(1);
  }
  void lcd_message(char line, char * ptr ) // 1st argument is the string pointer the other is line No.
